@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Button from "./Button";
 import { ButtonColors, ButtonTypes, ButtonWidths } from "./button.constants";
 import { AppThemes } from "../theme/types/types";
-
+import {IconTypes} from "../IconTypes"
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
     title: "ReactComponentLibrary/Button",
@@ -21,5 +21,6 @@ ClickMe.args = {
     color: ButtonColors.DANGER,
     type: ButtonTypes.SECONDARY,
     theme: AppThemes.DARK,
-    disabled: false
+    disabled: false,
+    icon: 'accounts_payable_medium'
 };
