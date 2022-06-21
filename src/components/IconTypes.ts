@@ -1,4 +1,4 @@
- export type  IconTypes = "accounts_payable_large"
+ export type  IconTypes =  "accounts_payable_large"
  |  "accounts_payable_medium"
  |  "accounts_receivable_large"
  |  "accounts_receivable_medium"
