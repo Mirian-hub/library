@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, Suspense, lazy, ReactElement, ReactComponentElement, ComponentType } from "react";
+import React, { ReactNode, useEffect, useState, Suspense, lazy, ReactElement, ReactComponentElement, ComponentType, JSXElementConstructor } from "react";
 import {
   buttonClasses,
   ButtonColor,
@@ -18,7 +18,7 @@ import { disabled as disabledConst } from "../globals.enum";
 // import Icon  from "../Icon/Icon";
 
 export interface ButtonProps {
-  label: string;
+  // label: string;
   width?: ButtonWidth;
   color?: ButtonColor;
   type?: ButtonType;
@@ -26,6 +26,7 @@ export interface ButtonProps {
   disabled?: boolean;
   Icon?: ComponentType<any>;
   TrailingIcon?: ComponentType<any>;
+  children?: ReactNode | JSX.Element[] | JSX.Element
 }
 
 const Button = (props: ButtonProps) => {
@@ -43,7 +44,8 @@ const Button = (props: ButtonProps) => {
   //   return toUpperCase.join("");
   // };
 
-  const {label, width, color, type, theme, disabled, Icon, TrailingIcon } = props;
+  const {width, color, type, theme, disabled, Icon, TrailingIcon, children } = props;
+  console.log('props', props)
   useEffect(() => {
     // const { width, color, type, theme, disabled, icon } = props;
     const changes: string[] = [ButtonCSSClasses.BASE, buttonClasses.get(type)];
@@ -75,11 +77,17 @@ const Button = (props: ButtonProps) => {
     disabled && changes.push(disabledConst);
     setbuttonStyle(changes);
   }, [props]);
+
+  const renderChildren = (prop: ReactNode | JSX.Element[] | JSX.Element ) => {
+    if(Array.isArray(prop)){
+      return prop.map(Child => Child)
+    } else{
+      return prop
+    }
+  }
   return (
     <button className={buttonStyle.join(" ")}>
-      {<Icon/>}
-      {label}
-      {<TrailingIcon/>}
+      {renderChildren(children)}
     </button>
   );
 };
