@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { TRowWrapper } from "../table-row/TRow";
 // import { TRowWrapper } from "../table-row/TRow";
 
 export interface TBodyProps {
@@ -7,19 +8,22 @@ export interface TBodyProps {
 }
 
 const TBody = ({ children, selectRow }: TBodyProps) => {
-  debugger;
-  return (
-    <div className="up-table-body">
-      {/* {Array(children).map((item) => (
-        <TRowWrapper children={item} selectRow={selectRow} />
-      ))} */}
-      {children}
-    </div>
-  );
+  return <></>;
 };
 
 export default TBody;
 
-// export const TBodyWrapper = ({ children, selectRow }) => {
-//   return <TBody children={children} selectRow={selectRow} />;
-// };
+export const TBodyWrapper = ({ children, hasSelect }) => {
+  return (
+    <div className="up-table-body">
+      {Array.isArray(children) ? (
+        children.map((item) => (
+          <TRowWrapper children={item} hasSelect={hasSelect} />
+        ))
+      ) : (
+        <TRowWrapper children={children} hasSelect={hasSelect} />
+      )}
+      {children}
+    </div>
+  );
+};

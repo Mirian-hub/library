@@ -27,7 +27,7 @@ const checkBox = (
 
 const filterICon = <i></i>;
 const Template: ComponentStory<typeof Table> = (args) => (
-  <Table density="relaxed" selectRow={{ mode: "checkBox" }}>
+  <Table density={args.density} selectRow={args.selectRow}>
     <THead>
       <TRow>
         <THCell hasFilter={true}>

@@ -1,13 +1,22 @@
 import React, { ReactNode } from 'react'
 import '../table/table.component.sass'
 export interface TCellProps {
-    children: ReactNode
+    children: any
+    hasSelect?: any
 }
 
 const TCell = ({children}: TCellProps) => {
   return (
-    <div className='up-table-td'>{children}</div>
+    <></>
   )
 }
 
 export default TCell
+
+export const TCellWrapper = ({children, hasSelect}: TCellProps) => {
+  console.log('TCellWrapper', children)
+
+  return (
+    <div className='up-table-td'>{children.props.children}</div>
+  )
+}
