@@ -8,10 +8,10 @@ export interface TRowProps {
 }
 
  const TRow = ({children, header} : TRowProps) => {  
-  console.log('children', children)  
-  console.log('header', header)  
   return (
-    header ? <div className='up-table-th'> {children} </div>: <div className='up-table-row' > {children} </div>
+      <div className='up-table-row' >      
+         {children}
+      </div>
   )
 }
 
