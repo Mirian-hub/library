@@ -1,42 +1,68 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import "../table/table.component.sass";
+import TableFilterTemplate from "../table-filter-template/TableFilterTemplate";
+
 export interface THCellProps {
   children: ReactNode;
   hasFilter?: boolean;
-  hasSelect?: any
+  filter?: Filter;
+}
+export interface THCellWrapperProps {
+  children: any;
+  filter?: Filter;
+  align?: "left" | "right";
+  filterTemplate?: JSX.Element;
 }
 
-const THCell = ({ children, hasFilter, }: THCellProps) => {
-  const hasChildren = Array.isArray(children)
-  const ArrayOfChildren = Array(children)
-  console.log('children check',children)
-  // console.log('ArrayOfChildren[1]',ArrayOfChildren[1])
+export interface Filter {
+  icon: ReactNode;
+  align: "left" | "right";
+}
 
-  return (
-    <div className="up-table-th">
-      <div className="up-table-th-label">{hasChildren ? children[0] : children}
-      {hasFilter && <i className="filter-icon">{hasChildren ? children[1] : children }</i> }
-      </div>
-      
-    </div>
-  );
+const THCell = ({ children, hasFilter }: THCellProps) => {
+  return <></>;
 };
 
 export default THCell;
 
-
-const THCellWrapper = ({ children, hasFilter }: THCellProps) => {
-  const hasChildren = Array.isArray(children)
-  const ArrayOfChildren = Array(children)
-  // console.log('children check',children)
-  // console.log('ArrayOfChildren[1]',ArrayOfChildren[1])
-
+export const THCellWrapper = ({ children, align }: THCellWrapperProps) => {
+  const [openModal, setOpenModal] = useState(false);
+  const toggleModal = () => setOpenModal((prev) => !prev);
+  const data = children.props.children;
+  const filter = children.props.filter;
   return (
-    <div className="up-table-th">
-      <div className="up-table-th-label">{hasChildren ? children[0] : children}
-      {hasFilter && <i className="filter-icon">{hasChildren ? children[1] : children }</i> }
+    <div
+      className={`up-table-th ${align === "right" ? "table-align-right" : ""}`}
+    >
+      <div className="up-table-th-label">
+        {filter ? (
+          <div style={{ position: "relative" }}>
+            {filter.align === "left" ? (
+              <>
+                <i className="filter-icon" onClick={toggleModal}>
+                  {filter.icon}{" "}
+                </i>
+                <TableFilterTemplate
+                  open={openModal}
+                  toggleGialod={toggleModal}
+                />
+                {data}
+              </>
+            ) : (
+              <>
+                {data}
+                <i className="filter-icon" onClick={toggleModal}>{filter.icon} </i>
+                <TableFilterTemplate
+                  open={openModal}
+                  toggleGialod={toggleModal}
+                />
+              </>
+            )}
+          </div>
+        ) : (
+          data
+        )}
       </div>
-      
     </div>
   );
 };

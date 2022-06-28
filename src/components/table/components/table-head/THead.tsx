@@ -8,15 +8,15 @@ export interface THeadProps {
 }
 
 const THead = ({ children, hasSelect }: THeadProps) => {
-  return (
-    <></>
-  );
+  return <></>;
 };
 
 export default THead;
 
-export const THeadWrapper = ({ children, hasSelect }) => {
-  return <div className="up-table-head">
-{<TRowWrapper children={children} hasSelect={hasSelect}/>}
-</div>;
+export const THeadWrapper = ({ children, hasSelect, align }) => {
+  return (
+    <div className="up-table-head">
+      {<TRowWrapper children={children} hasSelect={hasSelect} align={align} isForTHead={true}/>}
+    </div>
+  );
 };

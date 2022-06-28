@@ -1,11 +1,20 @@
 import React from "react";
 import { TCellWrapper } from "../table-cell/TCell";
+import { THCellWrapper } from "../table-head-cell/THCell";
 import "../table/table.component.sass";
 
 export interface TRowProps {
   children: JSX.Element[];
   header?: boolean;
   hasSelect?: any;
+  isTH?: boolean;
+}
+
+export interface TRowWrapperProps {
+  children: any,
+   hasSelect?: boolean,
+  align?: 'left'| 'right',
+  isForTHead?: boolean,
 }
 
 const TRow = ({ children, hasSelect }: TRowProps) => {
@@ -14,9 +23,7 @@ const TRow = ({ children, hasSelect }: TRowProps) => {
 
 export default TRow;
 
-export const TRowWrapper = ({ children, hasSelect }) => {
-  console.log('pr',children)
-  console.log('pr has Sel', hasSelect)
+export const TRowWrapper = ({ children, hasSelect, align, isForTHead }: TRowWrapperProps) => {
   const checkBox = (
     <div className="form-check">
       <input
@@ -29,18 +36,14 @@ export const TRowWrapper = ({ children, hasSelect }) => {
   );
   return (
     <div className="up-table-row">
-      {hasSelect &&  checkBox}
-      {children.props.children.map((item) => (
-        <>
-        
-        <TCellWrapper children={item} hasSelect={hasSelect} />
-        </>
-      ))}
-      {/* {Array.isArray(children) ? (
-        
-      ) : (
-        <TCellWrapper children={children} hasSelect={hasSelect} />
-      )} */}
+      {hasSelect && checkBox}
+      {children.props.children.map((item) =>
+        isForTHead ? (
+          <THCellWrapper children={item}  align={align}/>
+        ) : (
+          <TCellWrapper children={item}  align={align} />
+        )
+      )}
     </div>
   );
 };

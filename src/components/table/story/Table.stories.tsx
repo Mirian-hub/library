@@ -6,7 +6,8 @@ import SvgFilterActiveMedium from "../../../svgComponents/FilterActiveMedium";
 import SvgFilterSmall from "../../../svgComponents/FilterSmall";
 
 import { AppThemes } from "../../theme/types/types";
-import { TableDisplayDensityEnum } from "../../../../dist/esm/types/components/table/enums";
+import Icon from "../../Icon/Icon";
+// import { TableDisplayDensityEnum } from "../../../../dist/esm/types/components/table/enums";
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "ReactComponentLibrary/Table",
@@ -27,14 +28,17 @@ const checkBox = (
 
 const filterICon = <i></i>;
 const Template: ComponentStory<typeof Table> = (args) => (
-  <Table density={args.density} selectRow={args.selectRow}>
+  <Table density={args.density} selectRow={args.selectRow} align={args.align}>
     <THead>
       <TRow>
-        <THCell hasFilter={true}>
-          Column 1 with filter <SvgFilterSmall />
+        <THCell filter={{ icon: <SvgFilterSmall />, align: "left" }}>
+          Column 1 with filter
         </THCell>
-        <THCell hasFilter={true}>
-          columnt 2 with filter <SvgFilterSmall />
+        <THCell
+          hasFilter={true}
+          filter={{ icon: <SvgFilterSmall />, align: "right" }}
+        >
+          Columnt 2 with filter
         </THCell>
         <THCell>Title 3</THCell>
         <THCell>Buttons</THCell>

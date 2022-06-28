@@ -1,6 +1,5 @@
 @import "../../../../styles/paragraphs/index"
 @import "../../../../styles/titles/index"
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap')
 
 .up-table
   border: 1px solid var(--up-neutral-400)
@@ -121,8 +120,7 @@
         padding-left: 20px
         white-space: nowrap
         text-overflow: ellipsis
-        overflow: hidden
-        align-items: center
+        align-items: left
         flex-grow: 1
         flex-shrink: 0
         flex-basis: 0
@@ -155,13 +153,13 @@
             margin-right: 8px
           &.filter-icon
             margin-left: 8px
+            position: relative
           &.sort-icon, &.filter-icon
             display: inline-flex
             & > div
               display: inline-flex
         .up-table-th-label
           white-space: nowrap
-          overflow-x: hidden
           text-overflow: ellipsis
         &.has-prefix-icon, &.has-suffix-icon
           .up-table-th-label

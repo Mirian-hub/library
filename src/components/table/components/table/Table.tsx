@@ -14,20 +14,18 @@ export interface SelecRowProps {
 export interface TableProps {
   density: keyof typeof TableDisplayDensityEnum;
   children: ReactNode;
-  selectRow?: boolean
+  selectRow?: boolean;
+  align: 'left'|'right';
+  hasFilter?: boolean
 }
 
-const Table = ({ density, children, selectRow }: TableProps) => {
+const Table = (props: TableProps) => {
   const textInput = useRef('tableRef');
-  console.log('children from table', children)
+  const {density, children, selectRow, align} = props
   return (
     <div className={`up-table ${TableDisplayDensityEnum[density]}`}>
-      {/* <div className="up-table-head">{THead}</div>
-      <div className="up-table-body">{TBody}</div> */}
-      {/* <THeadWrapper children={children[0].props.children} selectRow={selectRow}/>
-      <TBodyWrapper children={children[1].props.children} selectRow={selectRow}/> */}
-      <THeadWrapper hasSelect={selectRow} children={children[0].props.children} />
-      <TBodyWrapper hasSelect={selectRow} children={children[1].props.children}/>
+      <THeadWrapper hasSelect={selectRow} children={children[0].props.children} align={align}/>
+      <TBodyWrapper hasSelect={selectRow} children={children[1].props.children} align={align}/>
     </div>
   );
 };

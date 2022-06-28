@@ -1,5 +1,5 @@
 export const TableAlign = {
-  LEFT: 'left',
+  'left': '',
   RIGHT: 'right'
 } as const;
 
