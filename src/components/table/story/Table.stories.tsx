@@ -15,18 +15,7 @@ export default {
 } as ComponentMeta<typeof Table>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const checkBox = (
-  <div className="form-check">
-    <input
-      className="form-check-input"
-      type="checkbox"
-      value=""
-      id="flexCheckDefault"
-    />
-  </div>
-);
 
-const filterICon = <i></i>;
 const Template: ComponentStory<typeof Table> = (args) => (
   <Table density={args.density} selectRow={args.selectRow} align={args.align}>
     <THead>
@@ -37,7 +26,7 @@ const Template: ComponentStory<typeof Table> = (args) => (
         <THCell
           hasFilter={true}
           filter={{ icon: <SvgFilterSmall />, align: "right" }}
-        >
+        > 
           Columnt 2 with filter
         </THCell>
         <THCell>Title 3</THCell>
@@ -123,6 +112,9 @@ const Template: ComponentStory<typeof Table> = (args) => (
 
 export const SimpleTable = Template.bind({});
 SimpleTable.args = {
-  density: "condensed",
-  children: <div> Some table </div>,
+  density: "relaxed",
+  children: <div> </div>,
+  selectRow: true,
+  align: 'left',
+  hasFilter: true
 };
