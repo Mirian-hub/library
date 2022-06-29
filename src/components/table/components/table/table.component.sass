@@ -127,12 +127,12 @@
         max-width: 100%
         min-width: 30px
         &.up-table-checkbox
-          max-width: 36px
-          overflow: hidden
-          text-overflow: unset
+          max-width: 50px
       .up-table-th.up-table-checkbox
-        height: 18px
+        max-width: 50px
+        padding-left: 20px
       .up-table-td.up-table-checkbox
+        max-width: 50px
         display: flex
         align-items: center
       .up-table-th.up-table-th--with-sort
@@ -143,6 +143,7 @@
           justify-content: right
       .up-table-th
         display: flex
+        padding-left: 0px
         &.table-align-right
           justify-content: flex-end
         i svg, i, i div
@@ -152,7 +153,6 @@
           &.sort-icon
             margin-right: 8px
           &.filter-icon
-            margin-left: 8px
             position: relative
           &.sort-icon, &.filter-icon
             display: inline-flex
@@ -161,6 +161,7 @@
         .up-table-th-label
           white-space: nowrap
           text-overflow: ellipsis
+          font-size: 14px
         &.has-prefix-icon, &.has-suffix-icon
           .up-table-th-label
             max-width: calc(100% - 38px)!important
@@ -195,7 +196,7 @@
       &:last-of-type
         border-bottom: none
       .up-table-td
-        @include up-paragraph-S
+        @include up-paragraph-base
         display: flex
         color: var(--up-neutral-900)
         font-weight: normal
@@ -205,4 +206,3 @@
         & > div, & > span
           white-space: nowrap
           text-overflow: ellipsis
-          overflow-x: hidden

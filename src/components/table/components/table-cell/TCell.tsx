@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react";
 import "../table/table.component.sass";
+import { CheckBox } from "../../../checkBox/CheckBox";
+
 export interface TCellProps {
   children: any;
   hasSelect?: any;
@@ -12,12 +14,11 @@ const TCell = ({ children }: TCellProps) => {
 
 export default TCell;
 
-export const TCellWrapper = ({ children, align }: TCellProps) => {
-  console.log("TCellWrapper", children);
-
+export const TCellWrapper = ({ children, align, hasSelect }: TCellProps) => {
+  console.log('children from TCellWrapper', children)
   return (
-    <div className={`up-table-td ${align === "right" ? "table-align-right": ''}`}>
-      {children.props.children}
+    <div className={`up-table-td ${align === "right" ? "table-align-right": ''} ${hasSelect && "up-table-checkbox"}`}>
+      {hasSelect ? <CheckBox/> :children.props.children  }
     </div>
   );
 };
