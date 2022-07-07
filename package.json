@@ -1,6 +1,6 @@
 {
   "name": "@uni_btn/button-rollup",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "description": "custom-react-library",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,7 +12,7 @@
   "keywords": [
     "lib3"
   ],
-  "author": "toko",
+  "author": "mirian",
   "license": "ISC",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

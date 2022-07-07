@@ -7,7 +7,6 @@ import SvgFilterSmall from "../../../svgComponents/FilterSmall";
 
 import { AppThemes } from "../../theme/types/types";
 import Icon from "../../Icon/Icon";
-// import { TableDisplayDensityEnum } from "../../../../dist/esm/types/components/table/enums";
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "ReactComponentLibrary/Table",
@@ -17,15 +16,13 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 
 const Template: ComponentStory<typeof Table> = (args) => (
-  <Table density={args.density} selectRow={args.selectRow} align={args.align}>
+  <Table {...args}>
     <THead>
       <TRow>
-        <THCell filter={{ icon: <SvgFilterSmall />, align: "left" }}>
+        <THCell  filterIcon={<SvgFilterSmall />} filterAlign='left'>
           Column 1 with filter
         </THCell>
-        <THCell
-          hasFilter={true}
-          filter={{ icon: <SvgFilterSmall />, align: "right" }}
+        <THCell  filterIcon={<SvgFilterSmall />} filterAlign='right'       
         > 
           Columnt 2 with filter
         </THCell>
@@ -39,7 +36,7 @@ const Template: ComponentStory<typeof Table> = (args) => (
         <TCell>val 1.2</TCell>
         <TCell>val 1.3</TCell>
         <TCell>
-          <Button type="secondary">text</Button>
+          <Button type="rounded">text</Button>
         </TCell>
       </TRow>
       <TRow>
@@ -55,7 +52,7 @@ const Template: ComponentStory<typeof Table> = (args) => (
         <TCell>val 2.2</TCell>
         <TCell>val 2.3</TCell>
         <TCell>
-          <Button type="primary">text</Button>
+          <Button type="rounded">text</Button>
         </TCell>
       </TRow>
       <TRow>
@@ -95,7 +92,7 @@ const Template: ComponentStory<typeof Table> = (args) => (
         <TCell>val 2.2</TCell>
         <TCell>val 2.3</TCell>
         <TCell>
-          <Button type="secondary-outline">text</Button>
+          <Button type="rounded">text</Button>
         </TCell>
       </TRow>
       <TRow>
@@ -103,7 +100,7 @@ const Template: ComponentStory<typeof Table> = (args) => (
         <TCell>val 2.2</TCell>
         <TCell>val 2.3</TCell>
         <TCell>
-          <Button>text</Button>
+          <Button  >text</Button>
         </TCell>
       </TRow>
     </TBody>
@@ -112,9 +109,9 @@ const Template: ComponentStory<typeof Table> = (args) => (
 
 export const SimpleTable = Template.bind({});
 SimpleTable.args = {
-  density: "relaxed",
-  children: <div> </div>,
-  selectRow: true,
-  align: 'left',
-  hasFilter: true
+ density: 'relaxed',
+ children: <></>,
+ hasSelect: true,
+ align: 'left',
+ hasFilter: true
 };

@@ -45,7 +45,6 @@ const Button = (props: ButtonProps) => {
   // };
 
   const {width, color, type, theme, disabled, Icon, TrailingIcon, children } = props;
-  console.log('props', props)
   useEffect(() => {
     // const { width, color, type, theme, disabled, icon } = props;
     const changes: string[] = [ButtonCSSClasses.BASE, buttonClasses.get(type)];

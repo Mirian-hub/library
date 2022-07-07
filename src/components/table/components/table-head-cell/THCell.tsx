@@ -5,23 +5,21 @@ import { CheckBox } from "../../../checkBox/CheckBox";
 
 export interface THCellProps {
   children: ReactNode;
-  hasFilter?: boolean;
-  filter?: Filter;
+  filterIcon?: JSX.Element;
+  filterAlign?: 'left'| 'right';
 }
 export interface THCellWrapperProps {
   children: any;
-  filter?: Filter;
+  filterIcon?: JSX.Element;
+  filterAlign?: 'left'|'right';
   align?: "left" | "right";
   filterTemplate?: JSX.Element;
   hasSelect: boolean;
+  forHeader?: boolean
 }
 
-export interface Filter {
-  icon: ReactNode;
-  align: "left" | "right";
-}
 
-const THCell = ({ children, hasFilter }: THCellProps) => {
+const THCell = ({ children, filterIcon, filterAlign }: THCellProps) => {
   return <></>;
 };
 
@@ -31,25 +29,27 @@ export const THCellWrapper = ({
   children,
   align,
   hasSelect,
+  forHeader
 }: THCellWrapperProps) => {
+  console.log('filter from THCellWrapper', children)
   const [openModal, setOpenModal] = useState(false);
   const toggleModal = () => setOpenModal((prev) => !prev);
   const data = children.props.children;
-  const filter = children.props.filter;
+  const {filterIcon, filterAlign} = children.props;
   return (
     <div
       className={`up-table-th ${align === "right" ? "table-align-right" : ""} ${hasSelect && "up-table-checkbox"}` }
     >
-      {hasSelect ? (
+      {hasSelect  ? (
         <CheckBox />
       ) : (
         <div className="up-table-th-label">
-          {filter ? (
+          {filterIcon ? (
             <div style={{ position: "relative" }}>
-              {filter.align === "left" ? (
+              {filterAlign === "left" ? (
                 <>
                   <i className="filter-icon" onClick={toggleModal}>
-                    {filter.icon}{" "}
+                    {filterIcon}
                   </i>
                   <TableFilterTemplate
                     open={openModal}
@@ -61,7 +61,7 @@ export const THCellWrapper = ({
                 <>
                   {data}
                   <i className="filter-icon" onClick={toggleModal}>
-                    {filter.icon}{" "}
+                    {filterIcon}
                   </i>
                   <TableFilterTemplate
                     open={openModal}

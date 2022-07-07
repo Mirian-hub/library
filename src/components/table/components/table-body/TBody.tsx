@@ -17,11 +17,12 @@ export default TBody;
 
 export const TBodyWrapper = ({ children, hasSelect, align }: TBodyProps) => {
   console.log('children from TBodyWrapper', children)
+  debugger
   return (
     <div className="up-table-body">
       {Array.isArray(children) ? (
-        children.map((item) => (
-          <TRowWrapper children={item} hasSelect={hasSelect} align={align} isForTHead={false} />
+        children.map((item, i) => (
+          <TRowWrapper key={i} children={item} hasSelect={hasSelect} align={align} isForTHead={false} />
         ))
       ) : (
         <TRowWrapper children={children} hasSelect={hasSelect} align={align} isForTHead={false}/>

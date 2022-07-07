@@ -24,28 +24,19 @@ const TRow = ({ children, hasSelect }: TRowProps) => {
 export default TRow;
 
 export const TRowWrapper = ({ children, hasSelect, align, isForTHead }: TRowWrapperProps) => {
-  // const checkBox = (
-  //   <div className="form-check">
-  //     <input
-  //       className="form-check-input"
-  //       type="checkbox"
-  //       value=""
-  //       id="flexCheckDefault"
-  //     />
-  //   </div>
-  // );
+  console.log('hasSelect', hasSelect)
   return (
     <div className="up-table-row">
       {isForTHead ? (
-          <THCellWrapper children={<></>}  align={align} hasSelect={true}/>
+          hasSelect && <THCellWrapper children={<></>}  align={align}  hasSelect={hasSelect} />
         ) : (
-          <TCellWrapper children={<></>}  align={align} hasSelect={true} />
+          hasSelect && <TCellWrapper children={<></>}  align={align} hasSelect={hasSelect} />
         )}
       {children.props.children.map(( item, i) =>
         isForTHead ? (
-          <THCellWrapper children={item}  align={align} hasSelect={false}/>
+          <THCellWrapper children={item} key={i}  align={align} hasSelect={false}/>
         ) : (
-          <TCellWrapper children={item}  align={align} hasSelect={false} />
+          <TCellWrapper children={item} key={i}  align={align} hasSelect={false} />
         )
       )}
     </div>
